@@ -1,3 +1,5 @@
+package _Prova_2.src;
+
 import java.util.Scanner;
 import java.text.DecimalFormat;
 

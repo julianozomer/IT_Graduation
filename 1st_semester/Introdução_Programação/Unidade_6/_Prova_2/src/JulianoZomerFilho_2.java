@@ -1,3 +1,5 @@
+package _Prova_2.src;
+
 import java.util.Scanner;
 
 public class JulianoZomerFilho_2 {
