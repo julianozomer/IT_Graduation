@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+
+//trabalho aprovado
 public class PalavraCruzadaMain {
     static private PalavraCruzadaMapa mapa;
     static private PalavraCruzadaPalavras palavras;
