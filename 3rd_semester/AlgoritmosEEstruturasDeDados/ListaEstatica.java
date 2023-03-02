@@ -88,8 +88,8 @@ public class ListaEstatica {
 		for (int i = 0; i<tamanho; i++) {
 			if (i > 0) {
 				resultado += ",";
-				resultado += info[i];
 			}
+			resultado += info[i];
 		}
 		
 		return resultado;
