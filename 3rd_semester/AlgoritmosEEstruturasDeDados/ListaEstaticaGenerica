@@ -96,7 +96,18 @@ public class ListaEstaticaGenerica<T> {
 	}
 	
 	public void inverter() {
-		
+
+        T aux;
+
+        // 3, 4, 1, 2, 8
+         for(int i = 0; i <= tamanho/2; i++) {
+             //var auxiliar p receber valor do vetor na ultima posição (5º)
+             aux = info[tamanho - i - 1];
+             // exemplo 6 - 0 - 1 = 5, ou seja, a ultima posicao do vetor info recebe oq tava no i = posicao 0 
+             info[tamanho - i - 1] = info[i];
+             // feito isso, agora a posicao 0 recebe oq tava no ultima pso, salva pelo aux
+             info[i] = aux;
+         }
 	}
 	
 }
