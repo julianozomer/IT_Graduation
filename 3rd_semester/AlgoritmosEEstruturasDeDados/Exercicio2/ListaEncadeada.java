@@ -1,13 +1,12 @@
 public class ListaEncadeada<T> {
 	
-	private NoLista primeiro;
+	private NoLista<T> primeiro;
 
 	public ListaEncadeada() {
-		ListaEncadeada[] lista = (ListaEncadeada[]) new Object ListaEncadeada();
 		primeiro = null;
 	}
 	
-	public NoLista getPrimeiro() {
+	public NoLista<T> getPrimeiro() {
 		return primeiro;
 	}
 	
@@ -24,7 +23,14 @@ public class ListaEncadeada<T> {
 	}
 	
 	public NoLista<T> buscar(T info){
-		for 
+		NoLista<T> p = primeiro;
+		while (p != null) {
+			if (p == info) {
+				return p;
+			}
+			p.setProximo(p);
+		}
+		return null;
 	}
 	
 	
