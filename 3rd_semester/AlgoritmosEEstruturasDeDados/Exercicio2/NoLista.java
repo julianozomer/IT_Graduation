@@ -2,11 +2,15 @@
 public class NoLista<T> {
 	
 	private T info;
-	private NoLista proximo;
+	private NoLista<T> proximo;
 	
-	public NoLista(T infoNova, NoLista proximo) {
+	public NoLista(T infoNova, NoLista<T> proximo) {
 		this.setInfo(infoNova);
 		this.setProximo(proximo);
+	}
+	
+	public NoLista() {
+		
 	}
 
 	public T getInfo() {
@@ -17,12 +21,11 @@ public class NoLista<T> {
 		this.info = info;
 	}
 
-	public NoLista getProximo() {
+	public NoLista<T> getProximo() {
 		return proximo;
 	}
 
-	public void setProximo(NoLista proximo) {
+	public void setProximo(NoLista<T> proximo) {
 		this.proximo = proximo;
 	}
 }
-
