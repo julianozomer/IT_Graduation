@@ -1,44 +1,41 @@
 import java.util.Arrays;
 
-public class PilhaVetor<T> {
-    private T[] info;
+public class PilhaVetor<T> implements Pilha<T> {
+	private T[] info;
     private int limite;
     private int tamanho;
 
     public PilhaVetor(int limite) {
         
         info = (T[]) new Object[limite];
+        this.limite = limite;
+        this.tamanho = 0;
 
     }
 
     public void push(T info) {
         
-        if(limite == tamanho) {
-            throw new IllegalArgumentException("PilhaCheiaException");
+        if(tamanho == limite) {
+            throw new PilhaCheiaException();
         }
 
-        this.info[limite] = info;
+        this.info[tamanho] = info;
         tamanho++;
     }  
 
-    public T pop(T info) {
-
-        T backup;
-        if(estaVazia()) {
-            throw new IllegalArgumentException("PilhaVaziaException");
-        }
-
+    public T pop() {
+    	
+        T valor = peek();
+        info[tamanho - 1] = null;
         tamanho--;
-        backup = peek();
-        return backup;
-
+        
+        return valor;
     }
 
     public T peek() {
-      
-        // se verdadeiro,
+       
         if(estaVazia()) {
-            throw new IllegalArgumentException("PilhaVaziaException");
+            throw new PilhaVaziaException();
        }
         
        return info[tamanho-1];
@@ -46,36 +43,50 @@ public class PilhaVetor<T> {
     }
 
     public boolean estaVazia() {
-        if(tamanho == 0) {
-            return true;
-        }
-        return false;
+        return (tamanho == 0);
     }
 
     public void liberar() {
-      for(int i = 0; i < tamanho; i++) {
-        this.info[i] = null;
-      }
-      this.tamanho = 0;
+    	
+    	//1opcao
+    	info = (T[]) new Object[limite];
+    	tamanho = 0;
+    	
+    	//2opcao
+    	while (!estaVazia()) {
+    		pop();
+    	}
+    	
+    	//3opcao
+    	try {
+    		while (true) {
+    			pop();
+    		}
+    	} catch (PilhaVaziaException e) {
+    		
+    	}
     }
 
     @Override
     public String toString() {
-        return "Pilha Vetor [info=" + Arrays.toString(info) + ", limite=" + limite + ", tamanho=" + tamanho + "]";
+    	String resultado = "";
+    	
+    	for (int i = tamanho - 1; i>= 0; i--) {
+    		resultado += info[i].toString();
+    		
+    		if (i > 0) {
+    			resultado = resultado + ",";
+    		}
+    	}
+        return resultado;
     }
 
-    public void concatenar(PilhaVetor<T> p ) {
-        if(p.estaVazia()) {
-            throw new IllegalArgumentException("PilhaVaziaException");
-        }
-
-        if(this.limite == this.tamanho) {
-            throw new IllegalArgumentException("PilhaCheiaException");
-        }
-        
-        for(int i = 0; i < p.tamanho; i++) {
-            this.info[this.tamanho] = p.info[i];
-            this.tamanho++;
-        }
+    public void concatenar(PilhaVetor<T> p2 ) {
+    	
+    	//profesor
+    	for (int i = 0; i < p2.tamanho; i++) {
+    		this.push(p2.info[i]);
+    	}
+    	
     }   
 }
