@@ -46,6 +46,7 @@ public class FilaVetor<T> implements Fila<T> {
 	public T retirar() {
 		// TODO Auto-generated method stub
 		T valor = this.peek();
+		info[inicio] = null;
 		
 		inicio = (inicio + 1) % limite;
 		tamanho--;
@@ -58,7 +59,6 @@ public class FilaVetor<T> implements Fila<T> {
 		// TODO Auto-generated method stub
 		info = (T[]) new FilaVetor[limite];
 		tamanho = 0;
-		inicio = 0;
 		
 	}
 	
@@ -77,11 +77,42 @@ public class FilaVetor<T> implements Fila<T> {
 	public FilaVetor<T> criarFilaConcatenada(FilaVetor<T> f2){
 		FilaVetor<T> f3 =  new FilaVetor(this.limite + f2.getLimite());
 		
-		//for (int i = this.getInicio(); i <= this.tamanho; i++) {
+		int indice = inicio;
+		for (int i = 0; i < tamanho; i++) {
+			T valor = info[indice];
+			f3.inserir(valor);
 			
-		//}
+			indice = (indice + 1) % limite;
+		}
+		
+		indice = f2.getInicio();
+		for (int i = 0; i < f2.getTamanho(); i++) {
+			T valor = f2.info[indice];
+			f3.inserir(valor);
+			
+			indice = (indice + 1) % f2.limite;
+		}
+		
+		//Não preciso usar os getters porque está tudo na mesma classe
 		return f3;
 	}
+	
+	public String toString() {
+		String retorno = "";
+		
+		int indice = inicio;
+		
+		for (int i = 0; i < tamanho; i++) {
+			if(i > 0) {
+				retorno += ",";
+			}
+			retorno += info[indice];
+			indice = (indice + 1) % limite;
+		}
+		return retorno;
+	}
+	
+	
 }
 
 
