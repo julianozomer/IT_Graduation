@@ -15,11 +15,6 @@ public class NoArvore<T> {
 		return info;
 	}
 	
-	public void inserirFilho(NoArvore<T> sa) {
-		sa.setProximo(this.primeiro);
-		this.setPrimeiro(sa);
-	}
-	
 	public void setInfo(T info) {
 		this.info = info;
 	}
@@ -40,6 +35,9 @@ public class NoArvore<T> {
 		this.proximo = proximo;
 	}
 	
-	
+	public void inserirFilho(NoArvore<T> sa) {
+		sa.setProximo(this.primeiro);
+		this.setPrimeiro(sa);
+	}
 	
 }
