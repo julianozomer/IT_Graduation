@@ -2,10 +2,6 @@
 public class NoArvore<T> {
 	
 	private T info;
-	public T getInfo() {
-		return info;
-	}
-
 	private NoArvore<T> primeiro;
 	private NoArvore<T> proximo;
 	
@@ -13,6 +9,10 @@ public class NoArvore<T> {
 		this.info= info;
 		primeiro = null;
 		proximo = null;
+	}
+	
+	public T getInfo() {
+		return info;
 	}
 	
 	public void inserirFilho(NoArvore<T> sa) {
