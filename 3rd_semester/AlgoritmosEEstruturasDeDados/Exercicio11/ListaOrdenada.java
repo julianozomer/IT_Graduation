@@ -4,7 +4,7 @@ public class ListaOrdenada<T extends Comparable<T>> extends ListaAbstract<T> {
 	public void inserir(T valor) {
 		T[] info = getInfo();
 		
-		//redimensionar caso falte espaço
+		//redimensionar caso falte espaÃ§o
 		if (info.length == getTamanho()) {
 			redimencionar();
 		}
@@ -56,7 +56,7 @@ public class ListaOrdenada<T extends Comparable<T>> extends ListaAbstract<T> {
 		Object[] info = getInfo();
 		int i;
 		
-		for (i = 0; i <= getTamanho(); i++) {
+		for (i = 0; i < getTamanho(); i++) {
 			//if (info[i] > itemAdicionar)
 			if (((Comparable)info[i]).compareTo(dadoAdicionar) > 0) {
 				break;
